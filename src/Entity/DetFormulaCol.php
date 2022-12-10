@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DetFormulaCol
  *
  * @ORM\Table(name="det_formula_col", indexes={@ORM\Index(name="det_formula_col_mprimas_codMPrima_fk", columns={"codMprima"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DetFormulaColRepository")
  */
 class DetFormulaCol
 {
@@ -39,6 +39,35 @@ class DetFormulaCol
      * })
      */
     private $codmprima;
+
+    public function getIdformulacolor(): ?int
+    {
+        return $this->idformulacolor;
+    }
+
+    public function getPorcentaje(): ?float
+    {
+        return $this->porcentaje;
+    }
+
+    public function setPorcentaje(?float $porcentaje): self
+    {
+        $this->porcentaje = $porcentaje;
+
+        return $this;
+    }
+
+    public function getCodmprima(): ?Mprimas
+    {
+        return $this->codmprima;
+    }
+
+    public function setCodmprima(?Mprimas $codmprima): self
+    {
+        $this->codmprima = $codmprima;
+
+        return $this;
+    }
 
 
 }

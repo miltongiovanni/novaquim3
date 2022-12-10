@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DetOrdProdMp
  *
  * @ORM\Table(name="det_ord_prod_mp", indexes={@ORM\Index(name="det_ord_prod_mp_mprimas_codMPrima_fk", columns={"idMPrima"}), @ORM\Index(name="IDX_7D46E6A7516BD0A2", columns={"loteMP"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ArmKit")
  */
 class DetOrdProdMp
 {
@@ -51,6 +51,47 @@ class DetOrdProdMp
      * })
      */
     private $lotemp;
+
+    public function getCantmprima(): ?float
+    {
+        return $this->cantmprima;
+    }
+
+    public function setCantmprima(?float $cantmprima): self
+    {
+        $this->cantmprima = $cantmprima;
+
+        return $this;
+    }
+
+    public function getLotemprima(): ?string
+    {
+        return $this->lotemprima;
+    }
+
+    public function getIdmprima(): ?Mprimas
+    {
+        return $this->idmprima;
+    }
+
+    public function setIdmprima(?Mprimas $idmprima): self
+    {
+        $this->idmprima = $idmprima;
+
+        return $this;
+    }
+
+    public function getLotemp(): ?OrdProdMp
+    {
+        return $this->lotemp;
+    }
+
+    public function setLotemp(?OrdProdMp $lotemp): self
+    {
+        $this->lotemp = $lotemp;
+
+        return $this;
+    }
 
 
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CatArp
  *
  * @ORM\Table(name="cat_arp")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CatArpRepository")
  */
 class CatArp
 {
@@ -34,6 +34,35 @@ class CatArp
      * @ORM\Column(name="trabajo", type="string", length=30, nullable=true)
      */
     private $trabajo;
+
+    public function getIdCatArl(): ?int
+    {
+        return $this->idCatArl;
+    }
+
+    public function getRiesgo(): ?float
+    {
+        return $this->riesgo;
+    }
+
+    public function setRiesgo(float $riesgo): self
+    {
+        $this->riesgo = $riesgo;
+
+        return $this;
+    }
+
+    public function getTrabajo(): ?string
+    {
+        return $this->trabajo;
+    }
+
+    public function setTrabajo(?string $trabajo): self
+    {
+        $this->trabajo = $trabajo;
+
+        return $this;
+    }
 
 
 }

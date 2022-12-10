@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * OrdProd
  *
  * @ORM\Table(name="ord_prod", indexes={@ORM\Index(name="Cod_prod", columns={"codProducto"}), @ORM\Index(name="ord_prod_estados_o_prod_idEstado_fk", columns={"estado"}), @ORM\Index(name="Cod_persona", columns={"codResponsable"}), @ORM\Index(name="ord_prod_formula_idFormula_fk", columns={"idFormula"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OrdProdRepository")
  */
 class OrdProd
 {
@@ -96,6 +99,107 @@ class OrdProd
     public function __construct()
     {
         $this->codpresentacion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getLote(): ?int
+    {
+        return $this->lote;
+    }
+
+    public function getFechprod(): ?\DateTimeInterface
+    {
+        return $this->fechprod;
+    }
+
+    public function setFechprod(?\DateTimeInterface $fechprod): self
+    {
+        $this->fechprod = $fechprod;
+
+        return $this;
+    }
+
+    public function getCantidadkg(): ?float
+    {
+        return $this->cantidadkg;
+    }
+
+    public function setCantidadkg(?float $cantidadkg): self
+    {
+        $this->cantidadkg = $cantidadkg;
+
+        return $this;
+    }
+
+    public function getCodresponsable(): ?Personal
+    {
+        return $this->codresponsable;
+    }
+
+    public function setCodresponsable(?Personal $codresponsable): self
+    {
+        $this->codresponsable = $codresponsable;
+
+        return $this;
+    }
+
+    public function getEstado(): ?EstadosOProd
+    {
+        return $this->estado;
+    }
+
+    public function setEstado(?EstadosOProd $estado): self
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    public function getCodproducto(): ?Productos
+    {
+        return $this->codproducto;
+    }
+
+    public function setCodproducto(?Productos $codproducto): self
+    {
+        $this->codproducto = $codproducto;
+
+        return $this;
+    }
+
+    public function getIdformula(): ?Formula
+    {
+        return $this->idformula;
+    }
+
+    public function setIdformula(?Formula $idformula): self
+    {
+        $this->idformula = $idformula;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Prodpre>
+     */
+    public function getCodpresentacion(): Collection
+    {
+        return $this->codpresentacion;
+    }
+
+    public function addCodpresentacion(Prodpre $codpresentacion): self
+    {
+        if (!$this->codpresentacion->contains($codpresentacion)) {
+            $this->codpresentacion->add($codpresentacion);
+        }
+
+        return $this;
+    }
+
+    public function removeCodpresentacion(Prodpre $codpresentacion): self
+    {
+        $this->codpresentacion->removeElement($codpresentacion);
+
+        return $this;
     }
 
 }

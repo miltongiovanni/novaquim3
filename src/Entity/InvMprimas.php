@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * InvMprimas
  *
  * @ORM\Table(name="inv_mprimas", indexes={@ORM\Index(name="IDX_51157F761A971E95", columns={"codMP"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvMprimasRepository")
  */
 class InvMprimas
 {
@@ -46,6 +47,47 @@ class InvMprimas
      * })
      */
     private $codmp;
+
+    public function getLotemp(): ?string
+    {
+        return $this->lotemp;
+    }
+
+    public function getInvmp(): ?float
+    {
+        return $this->invmp;
+    }
+
+    public function setInvmp(?float $invmp): self
+    {
+        $this->invmp = $invmp;
+
+        return $this;
+    }
+
+    public function getFechlote(): ?\DateTimeInterface
+    {
+        return $this->fechlote;
+    }
+
+    public function setFechlote(?\DateTimeInterface $fechlote): self
+    {
+        $this->fechlote = $fechlote;
+
+        return $this;
+    }
+
+    public function getCodmp(): ?Mprimas
+    {
+        return $this->codmp;
+    }
+
+    public function setCodmp(?Mprimas $codmp): self
+    {
+        $this->codmp = $codmp;
+
+        return $this;
+    }
 
 
 }

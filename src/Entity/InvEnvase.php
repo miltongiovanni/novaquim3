@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * InvEnvase
  *
  * @ORM\Table(name="inv_envase")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvEnvaseRepository")
  */
 class InvEnvase
 {
@@ -30,6 +30,30 @@ class InvEnvase
      * })
      */
     private $codenvase;
+
+    public function getInvenvase(): ?int
+    {
+        return $this->invenvase;
+    }
+
+    public function setInvenvase(?int $invenvase): self
+    {
+        $this->invenvase = $invenvase;
+
+        return $this;
+    }
+
+    public function getCodenvase(): ?Envases
+    {
+        return $this->codenvase;
+    }
+
+    public function setCodenvase(?Envases $codenvase): self
+    {
+        $this->codenvase = $codenvase;
+
+        return $this;
+    }
 
 
 }

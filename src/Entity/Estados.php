@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Estados
  *
  * @ORM\Table(name="estados")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\EstadosRepository")
  */
 class Estados
 {
@@ -27,6 +27,23 @@ class Estados
      * @ORM\Column(name="descEstado", type="string", length=30, nullable=false)
      */
     private $descestado = '';
+
+    public function getIdestado(): ?int
+    {
+        return $this->idestado;
+    }
+
+    public function getDescestado(): ?string
+    {
+        return $this->descestado;
+    }
+
+    public function setDescestado(string $descestado): self
+    {
+        $this->descestado = $descestado;
+
+        return $this;
+    }
 
 
 }

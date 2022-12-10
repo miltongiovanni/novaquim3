@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CatClien
  *
  * @ORM\Table(name="cat_clien")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CatClienRepository")
  */
 class CatClien
 {
@@ -27,6 +27,23 @@ class CatClien
      * @ORM\Column(name="desCatClien", type="string", length=36, nullable=false)
      */
     private $descatclien = '';
+
+    public function getIdcatclien(): ?int
+    {
+        return $this->idcatclien;
+    }
+
+    public function getDescatclien(): ?string
+    {
+        return $this->descatclien;
+    }
+
+    public function setDescatclien(string $descatclien): self
+    {
+        $this->descatclien = $descatclien;
+
+        return $this;
+    }
 
 
 }

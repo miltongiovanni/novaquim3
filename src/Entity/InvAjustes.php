@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * InvAjustes
  *
  * @ORM\Table(name="inv_ajustes", indexes={@ORM\Index(name="inv_ajustes_personal_idPersonal_fk", columns={"idResponsable"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvAjustesRepository")
  */
 class InvAjustes
 {
@@ -79,6 +80,107 @@ class InvAjustes
      * })
      */
     private $idresponsable;
+
+    public function getIdajustes(): ?int
+    {
+        return $this->idajustes;
+    }
+
+    public function getTipoInv(): ?string
+    {
+        return $this->tipoInv;
+    }
+
+    public function setTipoInv(string $tipoInv): self
+    {
+        $this->tipoInv = $tipoInv;
+
+        return $this;
+    }
+
+    public function getFechaAjuste(): ?\DateTimeInterface
+    {
+        return $this->fechaAjuste;
+    }
+
+    public function setFechaAjuste(?\DateTimeInterface $fechaAjuste): self
+    {
+        $this->fechaAjuste = $fechaAjuste;
+
+        return $this;
+    }
+
+    public function getMotivoAjuste(): ?string
+    {
+        return $this->motivoAjuste;
+    }
+
+    public function setMotivoAjuste(?string $motivoAjuste): self
+    {
+        $this->motivoAjuste = $motivoAjuste;
+
+        return $this;
+    }
+
+    public function getInvAnt(): ?float
+    {
+        return $this->invAnt;
+    }
+
+    public function setInvAnt(?float $invAnt): self
+    {
+        $this->invAnt = $invAnt;
+
+        return $this;
+    }
+
+    public function getInvNvo(): ?float
+    {
+        return $this->invNvo;
+    }
+
+    public function setInvNvo(?float $invNvo): self
+    {
+        $this->invNvo = $invNvo;
+
+        return $this;
+    }
+
+    public function getCodigo(): ?int
+    {
+        return $this->codigo;
+    }
+
+    public function setCodigo(?int $codigo): self
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    public function getLote(): ?string
+    {
+        return $this->lote;
+    }
+
+    public function setLote(?string $lote): self
+    {
+        $this->lote = $lote;
+
+        return $this;
+    }
+
+    public function getIdresponsable(): ?Personal
+    {
+        return $this->idresponsable;
+    }
+
+    public function setIdresponsable(?Personal $idresponsable): self
+    {
+        $this->idresponsable = $idresponsable;
+
+        return $this;
+    }
 
 
 }

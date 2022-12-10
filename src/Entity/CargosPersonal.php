@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CargosPersonal
  *
  * @ORM\Table(name="cargos_personal")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CargosPersonalRepository")
  */
 class CargosPersonal
 {
@@ -27,6 +27,23 @@ class CargosPersonal
      * @ORM\Column(name="cargo", type="string", length=30, nullable=true)
      */
     private $cargo;
+
+    public function getIdcargo(): ?int
+    {
+        return $this->idcargo;
+    }
+
+    public function getCargo(): ?string
+    {
+        return $this->cargo;
+    }
+
+    public function setCargo(?string $cargo): self
+    {
+        $this->cargo = $cargo;
+
+        return $this;
+    }
 
 
 }

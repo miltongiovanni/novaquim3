@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Rutero
  *
  * @ORM\Table(name="rutero")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RuteroRepository")
  */
 class Rutero
 {
@@ -34,6 +35,35 @@ class Rutero
      * @ORM\Column(name="listaPedidos", type="string", length=255, nullable=true)
      */
     private $listapedidos;
+
+    public function getIdrutero(): ?int
+    {
+        return $this->idrutero;
+    }
+
+    public function getFecharutero(): ?\DateTimeInterface
+    {
+        return $this->fecharutero;
+    }
+
+    public function setFecharutero(?\DateTimeInterface $fecharutero): self
+    {
+        $this->fecharutero = $fecharutero;
+
+        return $this;
+    }
+
+    public function getListapedidos(): ?string
+    {
+        return $this->listapedidos;
+    }
+
+    public function setListapedidos(?string $listapedidos): self
+    {
+        $this->listapedidos = $listapedidos;
+
+        return $this;
+    }
 
 
 }

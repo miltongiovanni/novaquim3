@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DetPedido
  *
  * @ORM\Table(name="det_pedido", indexes={@ORM\Index(name="det_pedido_idPedido_codProducto_index", columns={"idPedido", "codProducto"}), @ORM\Index(name="IDX_A5DBB9CEA7FDBE54", columns={"idPedido"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DetPedidoRepository")
  */
 class DetPedido
 {
@@ -46,6 +46,47 @@ class DetPedido
      * })
      */
     private $idpedido;
+
+    public function getCodproducto(): ?int
+    {
+        return $this->codproducto;
+    }
+
+    public function getCantproducto(): ?int
+    {
+        return $this->cantproducto;
+    }
+
+    public function setCantproducto(?int $cantproducto): self
+    {
+        $this->cantproducto = $cantproducto;
+
+        return $this;
+    }
+
+    public function getPrecioproducto(): ?float
+    {
+        return $this->precioproducto;
+    }
+
+    public function setPrecioproducto(float $precioproducto): self
+    {
+        $this->precioproducto = $precioproducto;
+
+        return $this;
+    }
+
+    public function getIdpedido(): ?Pedido
+    {
+        return $this->idpedido;
+    }
+
+    public function setIdpedido(?Pedido $idpedido): self
+    {
+        $this->idpedido = $idpedido;
+
+        return $this;
+    }
 
 
 }

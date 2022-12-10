@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Kit
  *
  * @ORM\Table(name="kit", indexes={@ORM\Index(name="kit_envases_codEnvase_fk", columns={"codEnvase"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\KitRepository")
  */
 class Kit
 {
@@ -37,6 +37,35 @@ class Kit
      * })
      */
     private $codenvase;
+
+    public function getIdkit(): ?int
+    {
+        return $this->idkit;
+    }
+
+    public function getCodigo(): ?int
+    {
+        return $this->codigo;
+    }
+
+    public function setCodigo(int $codigo): self
+    {
+        $this->codigo = $codigo;
+
+        return $this;
+    }
+
+    public function getCodenvase(): ?Envases
+    {
+        return $this->codenvase;
+    }
+
+    public function setCodenvase(?Envases $codenvase): self
+    {
+        $this->codenvase = $codenvase;
+
+        return $this;
+    }
 
 
 }

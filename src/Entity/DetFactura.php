@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DetFactura
  *
  * @ORM\Table(name="det_factura", indexes={@ORM\Index(name="det_factura_codProducto_index", columns={"codProducto"}), @ORM\Index(name="det_factura_tasa_iva_idTasaIva_fk", columns={"idTasaIvaProducto"}), @ORM\Index(name="IDX_F98A97A6E952CBFB", columns={"idFactura"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DetFacturaRepository")
  */
 class DetFactura
 {
@@ -56,6 +56,59 @@ class DetFactura
      * })
      */
     private $idtasaivaproducto;
+
+    public function getCodproducto(): ?int
+    {
+        return $this->codproducto;
+    }
+
+    public function getCantproducto(): ?int
+    {
+        return $this->cantproducto;
+    }
+
+    public function setCantproducto(?int $cantproducto): self
+    {
+        $this->cantproducto = $cantproducto;
+
+        return $this;
+    }
+
+    public function getPrecioproducto(): ?float
+    {
+        return $this->precioproducto;
+    }
+
+    public function setPrecioproducto(float $precioproducto): self
+    {
+        $this->precioproducto = $precioproducto;
+
+        return $this;
+    }
+
+    public function getIdfactura(): ?Factura
+    {
+        return $this->idfactura;
+    }
+
+    public function setIdfactura(?Factura $idfactura): self
+    {
+        $this->idfactura = $idfactura;
+
+        return $this;
+    }
+
+    public function getIdtasaivaproducto(): ?TasaIva
+    {
+        return $this->idtasaivaproducto;
+    }
+
+    public function setIdtasaivaproducto(?TasaIva $idtasaivaproducto): self
+    {
+        $this->idtasaivaproducto = $idtasaivaproducto;
+
+        return $this;
+    }
 
 
 }

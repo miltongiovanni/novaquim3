@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TapasVal
  *
  * @ORM\Table(name="tapas_val", indexes={@ORM\Index(name="tapas_val_tasa_iva_idTasaIva_fk", columns={"codIva"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TapasValRepository")
  */
 class TapasVal
 {
@@ -51,6 +51,59 @@ class TapasVal
      * })
      */
     private $codiva;
+
+    public function getCodtapa(): ?int
+    {
+        return $this->codtapa;
+    }
+
+    public function getTapa(): ?string
+    {
+        return $this->tapa;
+    }
+
+    public function setTapa(?string $tapa): self
+    {
+        $this->tapa = $tapa;
+
+        return $this;
+    }
+
+    public function getStocktapa(): ?int
+    {
+        return $this->stocktapa;
+    }
+
+    public function setStocktapa(?int $stocktapa): self
+    {
+        $this->stocktapa = $stocktapa;
+
+        return $this;
+    }
+
+    public function getPretapa(): ?float
+    {
+        return $this->pretapa;
+    }
+
+    public function setPretapa(?float $pretapa): self
+    {
+        $this->pretapa = $pretapa;
+
+        return $this;
+    }
+
+    public function getCodiva(): ?TasaIva
+    {
+        return $this->codiva;
+    }
+
+    public function setCodiva(?TasaIva $codiva): self
+    {
+        $this->codiva = $codiva;
+
+        return $this;
+    }
 
 
 }

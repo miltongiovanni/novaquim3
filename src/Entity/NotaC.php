@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * NotaC
  *
  * @ORM\Table(name="nota_c", indexes={@ORM\Index(name="nota_c_factura_idFactura_fk", columns={"facturaDestino"}), @ORM\Index(name="nota_c_clientes_idCliente_fk", columns={"idCliente"}), @ORM\Index(name="nota_c_factura_idFactura_fk_2", columns={"facturaOrigen"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\NotaCRepository")
  */
 class NotaC
 {
@@ -113,6 +114,155 @@ class NotaC
      * })
      */
     private $facturadestino;
+
+    public function getIdnotac(): ?int
+    {
+        return $this->idnotac;
+    }
+
+    public function getFechanotac(): ?\DateTimeInterface
+    {
+        return $this->fechanotac;
+    }
+
+    public function setFechanotac(?\DateTimeInterface $fechanotac): self
+    {
+        $this->fechanotac = $fechanotac;
+
+        return $this;
+    }
+
+    public function getTotalnotac(): ?float
+    {
+        return $this->totalnotac;
+    }
+
+    public function setTotalnotac(float $totalnotac): self
+    {
+        $this->totalnotac = $totalnotac;
+
+        return $this;
+    }
+
+    public function getSubtotalnotac(): ?float
+    {
+        return $this->subtotalnotac;
+    }
+
+    public function setSubtotalnotac(float $subtotalnotac): self
+    {
+        $this->subtotalnotac = $subtotalnotac;
+
+        return $this;
+    }
+
+    public function getIvanotac(): ?float
+    {
+        return $this->ivanotac;
+    }
+
+    public function setIvanotac(?float $ivanotac): self
+    {
+        $this->ivanotac = $ivanotac;
+
+        return $this;
+    }
+
+    public function getRetftenotac(): ?float
+    {
+        return $this->retftenotac;
+    }
+
+    public function setRetftenotac(?float $retftenotac): self
+    {
+        $this->retftenotac = $retftenotac;
+
+        return $this;
+    }
+
+    public function getReticanotac(): ?float
+    {
+        return $this->reticanotac;
+    }
+
+    public function setReticanotac(?float $reticanotac): self
+    {
+        $this->reticanotac = $reticanotac;
+
+        return $this;
+    }
+
+    public function getRetivanotac(): ?float
+    {
+        return $this->retivanotac;
+    }
+
+    public function setRetivanotac(?float $retivanotac): self
+    {
+        $this->retivanotac = $retivanotac;
+
+        return $this;
+    }
+
+    public function getMotivo(): ?int
+    {
+        return $this->motivo;
+    }
+
+    public function setMotivo(int $motivo): self
+    {
+        $this->motivo = $motivo;
+
+        return $this;
+    }
+
+    public function getDescuentofactorigen(): ?float
+    {
+        return $this->descuentofactorigen;
+    }
+
+    public function setDescuentofactorigen(?float $descuentofactorigen): self
+    {
+        $this->descuentofactorigen = $descuentofactorigen;
+
+        return $this;
+    }
+
+    public function getFacturaorigen(): ?Factura
+    {
+        return $this->facturaorigen;
+    }
+
+    public function setFacturaorigen(?Factura $facturaorigen): self
+    {
+        $this->facturaorigen = $facturaorigen;
+
+        return $this;
+    }
+
+    public function getIdcliente(): ?Clientes
+    {
+        return $this->idcliente;
+    }
+
+    public function setIdcliente(?Clientes $idcliente): self
+    {
+        $this->idcliente = $idcliente;
+
+        return $this;
+    }
+
+    public function getFacturadestino(): ?Factura
+    {
+        return $this->facturadestino;
+    }
+
+    public function setFacturadestino(?Factura $facturadestino): self
+    {
+        $this->facturadestino = $facturadestino;
+
+        return $this;
+    }
 
 
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * InvEtiquetas
  *
  * @ORM\Table(name="inv_etiquetas")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvEtiquetasRepository")
  */
 class InvEtiquetas
 {
@@ -30,6 +30,30 @@ class InvEtiquetas
      * })
      */
     private $codetiq;
+
+    public function getInvetiq(): ?int
+    {
+        return $this->invetiq;
+    }
+
+    public function setInvetiq(?int $invetiq): self
+    {
+        $this->invetiq = $invetiq;
+
+        return $this;
+    }
+
+    public function getCodetiq(): ?Etiquetas
+    {
+        return $this->codetiq;
+    }
+
+    public function setCodetiq(?Etiquetas $codetiq): self
+    {
+        $this->codetiq = $codetiq;
+
+        return $this;
+    }
 
 
 }

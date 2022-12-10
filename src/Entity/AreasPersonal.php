@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * AreasPersonal
  *
  * @ORM\Table(name="areas_personal")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\AreasPersonalRepository")
  */
 class AreasPersonal
 {
@@ -27,6 +27,23 @@ class AreasPersonal
      * @ORM\Column(name="area", type="string", length=30, nullable=true)
      */
     private $area;
+
+    public function getIdarea(): ?int
+    {
+        return $this->idarea;
+    }
+
+    public function getArea(): ?string
+    {
+        return $this->area;
+    }
+
+    public function setArea(?string $area): self
+    {
+        $this->area = $area;
+
+        return $this;
+    }
 
 
 }

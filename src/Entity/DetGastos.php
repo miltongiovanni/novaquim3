@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DetGastos
  *
  * @ORM\Table(name="det_gastos", indexes={@ORM\Index(name="codigo_dist", columns={"producto"}), @ORM\Index(name="det_gastos_tasa_iva_idTasaIva_fk", columns={"codIva"}), @ORM\Index(name="IDX_604DF7ACB9879909", columns={"idGasto"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DetGastosRepository")
  */
 class DetGastos
 {
@@ -56,6 +56,59 @@ class DetGastos
      * })
      */
     private $idgasto;
+
+    public function getProducto(): ?string
+    {
+        return $this->producto;
+    }
+
+    public function getCantgasto(): ?float
+    {
+        return $this->cantgasto;
+    }
+
+    public function setCantgasto(float $cantgasto): self
+    {
+        $this->cantgasto = $cantgasto;
+
+        return $this;
+    }
+
+    public function getPrecgasto(): ?float
+    {
+        return $this->precgasto;
+    }
+
+    public function setPrecgasto(float $precgasto): self
+    {
+        $this->precgasto = $precgasto;
+
+        return $this;
+    }
+
+    public function getCodiva(): ?TasaIva
+    {
+        return $this->codiva;
+    }
+
+    public function setCodiva(?TasaIva $codiva): self
+    {
+        $this->codiva = $codiva;
+
+        return $this;
+    }
+
+    public function getIdgasto(): ?Gastos
+    {
+        return $this->idgasto;
+    }
+
+    public function setIdgasto(?Gastos $idgasto): self
+    {
+        $this->idgasto = $idgasto;
+
+        return $this;
+    }
 
 
 }

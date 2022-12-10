@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DetCompras
  *
  * @ORM\Table(name="det_compras", indexes={@ORM\Index(name="IDX_36F3D618FDD09965", columns={"idCompra"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DetComprasRepository")
  */
 class DetCompras
 {
@@ -53,6 +53,59 @@ class DetCompras
      * })
      */
     private $idcompra;
+
+    public function getCodigo(): ?int
+    {
+        return $this->codigo;
+    }
+
+    public function getCantidad(): ?float
+    {
+        return $this->cantidad;
+    }
+
+    public function setCantidad(float $cantidad): self
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    public function getPrecio(): ?float
+    {
+        return $this->precio;
+    }
+
+    public function setPrecio(float $precio): self
+    {
+        $this->precio = $precio;
+
+        return $this;
+    }
+
+    public function getLote(): ?string
+    {
+        return $this->lote;
+    }
+
+    public function setLote(?string $lote): self
+    {
+        $this->lote = $lote;
+
+        return $this;
+    }
+
+    public function getIdcompra(): ?Compras
+    {
+        return $this->idcompra;
+    }
+
+    public function setIdcompra(?Compras $idcompra): self
+    {
+        $this->idcompra = $idcompra;
+
+        return $this;
+    }
 
 
 }

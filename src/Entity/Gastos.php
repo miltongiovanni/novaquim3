@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Gastos
  *
  * @ORM\Table(name="gastos", indexes={@ORM\Index(name="gastos_proveedores_idProv_fk", columns={"idProv"}), @ORM\Index(name="gastos_estados_idEstado_fk", columns={"estadoGasto"}), @ORM\Index(name="gastos_tip_compra_idTipo_fk", columns={"tipoCompra"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\GastosRepository")
  */
 class Gastos
 {
@@ -120,6 +121,167 @@ class Gastos
      * })
      */
     private $idprov;
+
+    public function getIdgasto(): ?int
+    {
+        return $this->idgasto;
+    }
+
+    public function getNumfact(): ?string
+    {
+        return $this->numfact;
+    }
+
+    public function setNumfact(?string $numfact): self
+    {
+        $this->numfact = $numfact;
+
+        return $this;
+    }
+
+    public function getFechgasto(): ?\DateTimeInterface
+    {
+        return $this->fechgasto;
+    }
+
+    public function setFechgasto(?\DateTimeInterface $fechgasto): self
+    {
+        $this->fechgasto = $fechgasto;
+
+        return $this;
+    }
+
+    public function getFechvenc(): ?\DateTimeInterface
+    {
+        return $this->fechvenc;
+    }
+
+    public function setFechvenc(?\DateTimeInterface $fechvenc): self
+    {
+        $this->fechvenc = $fechvenc;
+
+        return $this;
+    }
+
+    public function getTotalgasto(): ?string
+    {
+        return $this->totalgasto;
+    }
+
+    public function setTotalgasto(string $totalgasto): self
+    {
+        $this->totalgasto = $totalgasto;
+
+        return $this;
+    }
+
+    public function getRetefuentegasto(): ?int
+    {
+        return $this->retefuentegasto;
+    }
+
+    public function setRetefuentegasto(int $retefuentegasto): self
+    {
+        $this->retefuentegasto = $retefuentegasto;
+
+        return $this;
+    }
+
+    public function getSubtotalgasto(): ?float
+    {
+        return $this->subtotalgasto;
+    }
+
+    public function setSubtotalgasto(float $subtotalgasto): self
+    {
+        $this->subtotalgasto = $subtotalgasto;
+
+        return $this;
+    }
+
+    public function getIvagasto(): ?float
+    {
+        return $this->ivagasto;
+    }
+
+    public function setIvagasto(float $ivagasto): self
+    {
+        $this->ivagasto = $ivagasto;
+
+        return $this;
+    }
+
+    public function getReteicagasto(): ?float
+    {
+        return $this->reteicagasto;
+    }
+
+    public function setReteicagasto(float $reteicagasto): self
+    {
+        $this->reteicagasto = $reteicagasto;
+
+        return $this;
+    }
+
+    public function getFechcancelacion(): ?\DateTimeInterface
+    {
+        return $this->fechcancelacion;
+    }
+
+    public function setFechcancelacion(?\DateTimeInterface $fechcancelacion): self
+    {
+        $this->fechcancelacion = $fechcancelacion;
+
+        return $this;
+    }
+
+    public function getIdusuario(): ?int
+    {
+        return $this->idusuario;
+    }
+
+    public function setIdusuario(int $idusuario): self
+    {
+        $this->idusuario = $idusuario;
+
+        return $this;
+    }
+
+    public function getTipocompra(): ?TipCompra
+    {
+        return $this->tipocompra;
+    }
+
+    public function setTipocompra(?TipCompra $tipocompra): self
+    {
+        $this->tipocompra = $tipocompra;
+
+        return $this;
+    }
+
+    public function getEstadogasto(): ?Estados
+    {
+        return $this->estadogasto;
+    }
+
+    public function setEstadogasto(?Estados $estadogasto): self
+    {
+        $this->estadogasto = $estadogasto;
+
+        return $this;
+    }
+
+    public function getIdprov(): ?Proveedores
+    {
+        return $this->idprov;
+    }
+
+    public function setIdprov(?Proveedores $idprov): self
+    {
+        $this->idprov = $idprov;
+
+        return $this;
+    }
 
 
 }

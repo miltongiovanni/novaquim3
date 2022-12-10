@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * InvDistribucion
  *
  * @ORM\Table(name="inv_distribucion")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvDistribucionRepository")
  */
 class InvDistribucion
 {
@@ -30,6 +30,30 @@ class InvDistribucion
      * })
      */
     private $coddistribucion;
+
+    public function getInvdistribucion(): ?float
+    {
+        return $this->invdistribucion;
+    }
+
+    public function setInvdistribucion(?float $invdistribucion): self
+    {
+        $this->invdistribucion = $invdistribucion;
+
+        return $this;
+    }
+
+    public function getCoddistribucion(): ?Distribucion
+    {
+        return $this->coddistribucion;
+    }
+
+    public function setCoddistribucion(?Distribucion $coddistribucion): self
+    {
+        $this->coddistribucion = $coddistribucion;
+
+        return $this;
+    }
 
 
 }

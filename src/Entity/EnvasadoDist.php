@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * EnvasadoDist
  *
  * @ORM\Table(name="envasado_dist", indexes={@ORM\Index(name="det_env_dist_distribucion_idDistribucion_fk", columns={"codDist"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\EnvasadoDistRepository")
  */
 class EnvasadoDist
 {
@@ -44,6 +45,47 @@ class EnvasadoDist
      * })
      */
     private $coddist;
+
+    public function getIdenvdist(): ?int
+    {
+        return $this->idenvdist;
+    }
+
+    public function getFechaenvdist(): ?\DateTimeInterface
+    {
+        return $this->fechaenvdist;
+    }
+
+    public function setFechaenvdist(?\DateTimeInterface $fechaenvdist): self
+    {
+        $this->fechaenvdist = $fechaenvdist;
+
+        return $this;
+    }
+
+    public function getCantidad(): ?int
+    {
+        return $this->cantidad;
+    }
+
+    public function setCantidad(?int $cantidad): self
+    {
+        $this->cantidad = $cantidad;
+
+        return $this;
+    }
+
+    public function getCoddist(): ?Distribucion
+    {
+        return $this->coddist;
+    }
+
+    public function setCoddist(?Distribucion $coddist): self
+    {
+        $this->coddist = $coddist;
+
+        return $this;
+    }
 
 
 }

@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * ArmKit
  *
  * @ORM\Table(name="arm_kit")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ArmKitRepository")
  */
 class ArmKit
 {
@@ -41,6 +42,47 @@ class ArmKit
      * @ORM\Column(name="fechArmado", type="date", nullable=false)
      */
     private $fecharmado;
+
+    public function getIdarmado(): ?int
+    {
+        return $this->idarmado;
+    }
+
+    public function getCodkit(): ?int
+    {
+        return $this->codkit;
+    }
+
+    public function setCodkit(int $codkit): self
+    {
+        $this->codkit = $codkit;
+
+        return $this;
+    }
+
+    public function getCantarmado(): ?int
+    {
+        return $this->cantarmado;
+    }
+
+    public function setCantarmado(int $cantarmado): self
+    {
+        $this->cantarmado = $cantarmado;
+
+        return $this;
+    }
+
+    public function getFecharmado(): ?\DateTimeInterface
+    {
+        return $this->fecharmado;
+    }
+
+    public function setFecharmado(\DateTimeInterface $fecharmado): self
+    {
+        $this->fecharmado = $fecharmado;
+
+        return $this;
+    }
 
 
 }

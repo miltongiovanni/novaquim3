@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * TasaRetefuente
  *
  * @ORM\Table(name="tasa_retefuente")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TasaRetefuenteRepository")
  */
 class TasaRetefuente
 {
@@ -34,6 +35,35 @@ class TasaRetefuente
      * @ORM\Column(name="descRetefuente", type="string", length=50, nullable=false)
      */
     private $descretefuente = '0';
+
+    public function getIdtasaretefuente(): ?int
+    {
+        return $this->idtasaretefuente;
+    }
+
+    public function getTasaretefuente(): ?string
+    {
+        return $this->tasaretefuente;
+    }
+
+    public function setTasaretefuente(string $tasaretefuente): self
+    {
+        $this->tasaretefuente = $tasaretefuente;
+
+        return $this;
+    }
+
+    public function getDescretefuente(): ?string
+    {
+        return $this->descretefuente;
+    }
+
+    public function setDescretefuente(string $descretefuente): self
+    {
+        $this->descretefuente = $descretefuente;
+
+        return $this;
+    }
 
 
 }

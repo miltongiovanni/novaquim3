@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FormulaCol
  *
  * @ORM\Table(name="formula_col", indexes={@ORM\Index(name="formula_col_mprimas_codMPrima_fk", columns={"codSolucionColor"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FormulaColRepository")
  */
 class FormulaCol
 {
@@ -30,6 +30,23 @@ class FormulaCol
      * })
      */
     private $codsolucioncolor;
+
+    public function getIdformulacolor(): ?int
+    {
+        return $this->idformulacolor;
+    }
+
+    public function getCodsolucioncolor(): ?Mprimas
+    {
+        return $this->codsolucioncolor;
+    }
+
+    public function setCodsolucioncolor(?Mprimas $codsolucioncolor): self
+    {
+        $this->codsolucioncolor = $codsolucioncolor;
+
+        return $this;
+    }
 
 
 }

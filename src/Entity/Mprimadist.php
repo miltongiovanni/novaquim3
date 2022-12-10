@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Mprimadist
  *
  * @ORM\Table(name="mprimadist", indexes={@ORM\Index(name="env_dist_mprimas_codMPrima_fk", columns={"codMPrima"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\MprimadistRepository")
  */
 class Mprimadist
 {
@@ -44,6 +44,47 @@ class Mprimadist
      * })
      */
     private $codmprima;
+
+    public function getCodmprimadist(): ?int
+    {
+        return $this->codmprimadist;
+    }
+
+    public function getProducto(): ?string
+    {
+        return $this->producto;
+    }
+
+    public function setProducto(?string $producto): self
+    {
+        $this->producto = $producto;
+
+        return $this;
+    }
+
+    public function getDensidad(): ?float
+    {
+        return $this->densidad;
+    }
+
+    public function setDensidad(?float $densidad): self
+    {
+        $this->densidad = $densidad;
+
+        return $this;
+    }
+
+    public function getCodmprima(): ?Mprimas
+    {
+        return $this->codmprima;
+    }
+
+    public function setCodmprima(?Mprimas $codmprima): self
+    {
+        $this->codmprima = $codmprima;
+
+        return $this;
+    }
 
 
 }

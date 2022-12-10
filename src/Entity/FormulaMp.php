@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FormulaMp
  *
  * @ORM\Table(name="formula_mp", indexes={@ORM\Index(name="formula_mp_mprimas_codMPrima_fk", columns={"codMPrima"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FormulaMpRepository")
  */
 class FormulaMp
 {
@@ -30,6 +30,23 @@ class FormulaMp
      * })
      */
     private $codmprima;
+
+    public function getIdformulamprima(): ?int
+    {
+        return $this->idformulamprima;
+    }
+
+    public function getCodmprima(): ?Mprimas
+    {
+        return $this->codmprima;
+    }
+
+    public function setCodmprima(?Mprimas $codmprima): self
+    {
+        $this->codmprima = $codmprima;
+
+        return $this;
+    }
 
 
 }

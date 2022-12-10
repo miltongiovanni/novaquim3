@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CotPersonalizada
  *
  * @ORM\Table(name="cot_personalizada", indexes={@ORM\Index(name="cot_personalizada_clientes_cotiz_idCliente_fk", columns={"idCliente"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CotPersonalizadaRepository")
  */
 class CotPersonalizada
 {
@@ -58,6 +59,71 @@ class CotPersonalizada
      * })
      */
     private $idcliente;
+
+    public function getIdcotpersonalizada(): ?int
+    {
+        return $this->idcotpersonalizada;
+    }
+
+    public function getFechacotizacion(): ?\DateTimeInterface
+    {
+        return $this->fechacotizacion;
+    }
+
+    public function setFechacotizacion(?\DateTimeInterface $fechacotizacion): self
+    {
+        $this->fechacotizacion = $fechacotizacion;
+
+        return $this;
+    }
+
+    public function getTipprecio(): ?int
+    {
+        return $this->tipprecio;
+    }
+
+    public function setTipprecio(int $tipprecio): self
+    {
+        $this->tipprecio = $tipprecio;
+
+        return $this;
+    }
+
+    public function getDestino(): ?int
+    {
+        return $this->destino;
+    }
+
+    public function setDestino(?int $destino): self
+    {
+        $this->destino = $destino;
+
+        return $this;
+    }
+
+    public function getIdusuario(): ?int
+    {
+        return $this->idusuario;
+    }
+
+    public function setIdusuario(int $idusuario): self
+    {
+        $this->idusuario = $idusuario;
+
+        return $this;
+    }
+
+    public function getIdcliente(): ?ClientesCotiz
+    {
+        return $this->idcliente;
+    }
+
+    public function setIdcliente(?ClientesCotiz $idcliente): self
+    {
+        $this->idcliente = $idcliente;
+
+        return $this;
+    }
 
 
 }

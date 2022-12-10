@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FamProd
  *
  * @ORM\Table(name="fam_prod")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FamProdRepository")
  */
 class FamProd
 {
@@ -27,6 +27,23 @@ class FamProd
      * @ORM\Column(name="Fam_produc", type="string", length=50, nullable=false)
      */
     private $famProduc = '';
+
+    public function getCodFamProd(): ?int
+    {
+        return $this->codFamProd;
+    }
+
+    public function getFamProduc(): ?string
+    {
+        return $this->famProduc;
+    }
+
+    public function setFamProduc(string $famProduc): self
+    {
+        $this->famProduc = $famProduc;
+
+        return $this;
+    }
 
 
 }

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Perfiles
  *
  * @ORM\Table(name="perfiles")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\PerfilesRepository")
  */
 class Perfiles
 {
@@ -27,6 +27,23 @@ class Perfiles
      * @ORM\Column(name="descripcion", type="string", length=255, nullable=false)
      */
     private $descripcion = '';
+
+    public function getIdperfil(): ?int
+    {
+        return $this->idperfil;
+    }
+
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion(string $descripcion): self
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
 
 
 }

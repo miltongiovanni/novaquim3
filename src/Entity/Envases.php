@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Envases
  *
  * @ORM\Table(name="envases", indexes={@ORM\Index(name="envases_tasa_iva_idTasaIva_fk", columns={"codIva"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\EnvasesRepository")
  */
 class Envases
 {
@@ -51,6 +51,59 @@ class Envases
      * })
      */
     private $codiva;
+
+    public function getCodenvase(): ?int
+    {
+        return $this->codenvase;
+    }
+
+    public function getNomenvase(): ?string
+    {
+        return $this->nomenvase;
+    }
+
+    public function setNomenvase(?string $nomenvase): self
+    {
+        $this->nomenvase = $nomenvase;
+
+        return $this;
+    }
+
+    public function getStockenvase(): ?int
+    {
+        return $this->stockenvase;
+    }
+
+    public function setStockenvase(?int $stockenvase): self
+    {
+        $this->stockenvase = $stockenvase;
+
+        return $this;
+    }
+
+    public function getPrecenvase(): ?float
+    {
+        return $this->precenvase;
+    }
+
+    public function setPrecenvase(float $precenvase): self
+    {
+        $this->precenvase = $precenvase;
+
+        return $this;
+    }
+
+    public function getCodiva(): ?TasaIva
+    {
+        return $this->codiva;
+    }
+
+    public function setCodiva(?TasaIva $codiva): self
+    {
+        $this->codiva = $codiva;
+
+        return $this;
+    }
 
 
 }

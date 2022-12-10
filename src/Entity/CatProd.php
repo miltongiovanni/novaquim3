@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CatProd
  *
  * @ORM\Table(name="cat_prod")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CatProdRepository")
  */
 class CatProd
 {
@@ -27,6 +27,23 @@ class CatProd
      * @ORM\Column(name="catProd", type="string", length=30, nullable=false)
      */
     private $catprod = '';
+
+    public function getIdcatprod(): ?int
+    {
+        return $this->idcatprod;
+    }
+
+    public function getCatprod(): ?string
+    {
+        return $this->catprod;
+    }
+
+    public function setCatprod(string $catprod): self
+    {
+        $this->catprod = $catprod;
+
+        return $this;
+    }
 
 
 }

@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * OrdProdMp
  *
  * @ORM\Table(name="ord_prod_mp", indexes={@ORM\Index(name="ord_prod_mp_formula_mp_idFormulaMPrima_fk", columns={"idFormMP"}), @ORM\Index(name="ord_prod_mp_mprimas_codMPrima_fk", columns={"codMPrima"}), @ORM\Index(name="ord_prod_mp_personal_idPersonal_fk", columns={"codPersonal"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OrdProdMpRepository")
  */
 class OrdProdMp
 {
@@ -64,6 +65,71 @@ class OrdProdMp
      * })
      */
     private $idformmp;
+
+    public function getLotemp(): ?int
+    {
+        return $this->lotemp;
+    }
+
+    public function getFechprod(): ?\DateTimeInterface
+    {
+        return $this->fechprod;
+    }
+
+    public function setFechprod(?\DateTimeInterface $fechprod): self
+    {
+        $this->fechprod = $fechprod;
+
+        return $this;
+    }
+
+    public function getCantkg(): ?float
+    {
+        return $this->cantkg;
+    }
+
+    public function setCantkg(?float $cantkg): self
+    {
+        $this->cantkg = $cantkg;
+
+        return $this;
+    }
+
+    public function getCodmprima(): ?Mprimas
+    {
+        return $this->codmprima;
+    }
+
+    public function setCodmprima(?Mprimas $codmprima): self
+    {
+        $this->codmprima = $codmprima;
+
+        return $this;
+    }
+
+    public function getCodpersonal(): ?Personal
+    {
+        return $this->codpersonal;
+    }
+
+    public function setCodpersonal(?Personal $codpersonal): self
+    {
+        $this->codpersonal = $codpersonal;
+
+        return $this;
+    }
+
+    public function getIdformmp(): ?FormulaMp
+    {
+        return $this->idformmp;
+    }
+
+    public function setIdformmp(?FormulaMp $idformmp): self
+    {
+        $this->idformmp = $idformmp;
+
+        return $this;
+    }
 
 
 }

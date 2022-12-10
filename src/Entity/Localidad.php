@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Localidad
  *
  * @ORM\Table(name="localidad")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\LocalidadRepository")
  */
 class Localidad
 {
@@ -34,6 +34,35 @@ class Localidad
      * @ORM\Column(name="localidad", type="string", length=20, nullable=true)
      */
     private $localidad;
+
+    public function getIdLocalidad(): ?int
+    {
+        return $this->idLocalidad;
+    }
+
+    public function getIdCity(): ?int
+    {
+        return $this->idCity;
+    }
+
+    public function setIdCity(?int $idCity): self
+    {
+        $this->idCity = $idCity;
+
+        return $this;
+    }
+
+    public function getLocalidad(): ?string
+    {
+        return $this->localidad;
+    }
+
+    public function setLocalidad(?string $localidad): self
+    {
+        $this->localidad = $localidad;
+
+        return $this;
+    }
 
 
 }

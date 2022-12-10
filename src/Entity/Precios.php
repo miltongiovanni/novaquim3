@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Precios
  *
  * @ORM\Table(name="precios")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\Precios")
  */
 class Precios
 {
@@ -76,6 +76,107 @@ class Precios
      * @ORM\Column(name="presLista", type="integer", nullable=true)
      */
     private $preslista = '0';
+
+    public function getCodigogen(): ?int
+    {
+        return $this->codigogen;
+    }
+
+    public function getProducto(): ?string
+    {
+        return $this->producto;
+    }
+
+    public function setProducto(?string $producto): self
+    {
+        $this->producto = $producto;
+
+        return $this;
+    }
+
+    public function getFabrica(): ?float
+    {
+        return $this->fabrica;
+    }
+
+    public function setFabrica(?float $fabrica): self
+    {
+        $this->fabrica = $fabrica;
+
+        return $this;
+    }
+
+    public function getDistribuidor(): ?float
+    {
+        return $this->distribuidor;
+    }
+
+    public function setDistribuidor(?float $distribuidor): self
+    {
+        $this->distribuidor = $distribuidor;
+
+        return $this;
+    }
+
+    public function getDetal(): ?float
+    {
+        return $this->detal;
+    }
+
+    public function setDetal(?float $detal): self
+    {
+        $this->detal = $detal;
+
+        return $this;
+    }
+
+    public function getMayor(): ?float
+    {
+        return $this->mayor;
+    }
+
+    public function setMayor(?float $mayor): self
+    {
+        $this->mayor = $mayor;
+
+        return $this;
+    }
+
+    public function getSuper(): ?float
+    {
+        return $this->super;
+    }
+
+    public function setSuper(?float $super): self
+    {
+        $this->super = $super;
+
+        return $this;
+    }
+
+    public function getPresactiva(): ?int
+    {
+        return $this->presactiva;
+    }
+
+    public function setPresactiva(?int $presactiva): self
+    {
+        $this->presactiva = $presactiva;
+
+        return $this;
+    }
+
+    public function getPreslista(): ?int
+    {
+        return $this->preslista;
+    }
+
+    public function setPreslista(?int $preslista): self
+    {
+        $this->preslista = $preslista;
+
+        return $this;
+    }
 
 
 }

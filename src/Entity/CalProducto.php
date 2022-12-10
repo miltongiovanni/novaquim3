@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * CalProducto
  *
  * @ORM\Table(name="cal_producto")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\CalProductoRepository")
  */
 class CalProducto
 {
@@ -69,6 +70,95 @@ class CalProducto
      * @ORM\Column(name="observacionesProd", type="text", length=65535, nullable=true)
      */
     private $observacionesprod;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getLote(): ?int
+    {
+        return $this->lote;
+    }
+
+    public function setLote(int $lote): self
+    {
+        $this->lote = $lote;
+
+        return $this;
+    }
+
+    public function getDensidadprod(): ?float
+    {
+        return $this->densidadprod;
+    }
+
+    public function setDensidadprod(float $densidadprod): self
+    {
+        $this->densidadprod = $densidadprod;
+
+        return $this;
+    }
+
+    public function getPhprod(): ?float
+    {
+        return $this->phprod;
+    }
+
+    public function setPhprod(float $phprod): self
+    {
+        $this->phprod = $phprod;
+
+        return $this;
+    }
+
+    public function getOlorprod(): ?int
+    {
+        return $this->olorprod;
+    }
+
+    public function setOlorprod(int $olorprod): self
+    {
+        $this->olorprod = $olorprod;
+
+        return $this;
+    }
+
+    public function getColorprod(): ?int
+    {
+        return $this->colorprod;
+    }
+
+    public function setColorprod(int $colorprod): self
+    {
+        $this->colorprod = $colorprod;
+
+        return $this;
+    }
+
+    public function getAparienciaprod(): ?int
+    {
+        return $this->aparienciaprod;
+    }
+
+    public function setAparienciaprod(int $aparienciaprod): self
+    {
+        $this->aparienciaprod = $aparienciaprod;
+
+        return $this;
+    }
+
+    public function getObservacionesprod(): ?string
+    {
+        return $this->observacionesprod;
+    }
+
+    public function setObservacionesprod(?string $observacionesprod): self
+    {
+        $this->observacionesprod = $observacionesprod;
+
+        return $this;
+    }
 
 
 }

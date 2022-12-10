@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Compras
  *
  * @ORM\Table(name="compras", indexes={@ORM\Index(name="compras_estados_idEstado_fk", columns={"estadoCompra"}), @ORM\Index(name="compras_proveedores_idProv_fk", columns={"idProv"}), @ORM\Index(name="compras_tip_compra_Id_tipo_fk", columns={"tipoCompra"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ComprasRepository")
  */
 class Compras
 {
@@ -120,6 +121,167 @@ class Compras
      * })
      */
     private $idprov;
+
+    public function getIdcompra(): ?int
+    {
+        return $this->idcompra;
+    }
+
+    public function getNumfact(): ?int
+    {
+        return $this->numfact;
+    }
+
+    public function setNumfact(?int $numfact): self
+    {
+        $this->numfact = $numfact;
+
+        return $this;
+    }
+
+    public function getFechcomp(): ?\DateTimeInterface
+    {
+        return $this->fechcomp;
+    }
+
+    public function setFechcomp(?\DateTimeInterface $fechcomp): self
+    {
+        $this->fechcomp = $fechcomp;
+
+        return $this;
+    }
+
+    public function getFechvenc(): ?\DateTimeInterface
+    {
+        return $this->fechvenc;
+    }
+
+    public function setFechvenc(?\DateTimeInterface $fechvenc): self
+    {
+        $this->fechvenc = $fechvenc;
+
+        return $this;
+    }
+
+    public function getTotalcompra(): ?string
+    {
+        return $this->totalcompra;
+    }
+
+    public function setTotalcompra(string $totalcompra): self
+    {
+        $this->totalcompra = $totalcompra;
+
+        return $this;
+    }
+
+    public function getSubtotalcompra(): ?float
+    {
+        return $this->subtotalcompra;
+    }
+
+    public function setSubtotalcompra(float $subtotalcompra): self
+    {
+        $this->subtotalcompra = $subtotalcompra;
+
+        return $this;
+    }
+
+    public function getIvacompra(): ?float
+    {
+        return $this->ivacompra;
+    }
+
+    public function setIvacompra(float $ivacompra): self
+    {
+        $this->ivacompra = $ivacompra;
+
+        return $this;
+    }
+
+    public function getRetefuentecompra(): ?int
+    {
+        return $this->retefuentecompra;
+    }
+
+    public function setRetefuentecompra(int $retefuentecompra): self
+    {
+        $this->retefuentecompra = $retefuentecompra;
+
+        return $this;
+    }
+
+    public function getReteicacompra(): ?float
+    {
+        return $this->reteicacompra;
+    }
+
+    public function setReteicacompra(float $reteicacompra): self
+    {
+        $this->reteicacompra = $reteicacompra;
+
+        return $this;
+    }
+
+    public function getFechcancelacion(): ?\DateTimeInterface
+    {
+        return $this->fechcancelacion;
+    }
+
+    public function setFechcancelacion(?\DateTimeInterface $fechcancelacion): self
+    {
+        $this->fechcancelacion = $fechcancelacion;
+
+        return $this;
+    }
+
+    public function getIdusuario(): ?int
+    {
+        return $this->idusuario;
+    }
+
+    public function setIdusuario(int $idusuario): self
+    {
+        $this->idusuario = $idusuario;
+
+        return $this;
+    }
+
+    public function getTipocompra(): ?TipCompra
+    {
+        return $this->tipocompra;
+    }
+
+    public function setTipocompra(?TipCompra $tipocompra): self
+    {
+        $this->tipocompra = $tipocompra;
+
+        return $this;
+    }
+
+    public function getEstadocompra(): ?Estados
+    {
+        return $this->estadocompra;
+    }
+
+    public function setEstadocompra(?Estados $estadocompra): self
+    {
+        $this->estadocompra = $estadocompra;
+
+        return $this;
+    }
+
+    public function getIdprov(): ?Proveedores
+    {
+        return $this->idprov;
+    }
+
+    public function setIdprov(?Proveedores $idprov): self
+    {
+        $this->idprov = $idprov;
+
+        return $this;
+    }
 
 
 }

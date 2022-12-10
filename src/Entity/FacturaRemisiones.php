@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * FacturaRemisiones
  *
  * @ORM\Table(name="factura_remisiones")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FacturaRemisionesRepository")
  */
 class FacturaRemisiones
 {
@@ -29,6 +29,16 @@ class FacturaRemisiones
      * @ORM\GeneratedValue(strategy="NONE")
      */
     private $idremision = '0';
+
+    public function getIdfactura(): ?int
+    {
+        return $this->idfactura;
+    }
+
+    public function getIdremision(): ?int
+    {
+        return $this->idremision;
+    }
 
 
 }

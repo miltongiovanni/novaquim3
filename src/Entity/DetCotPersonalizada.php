@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DetCotPersonalizada
  *
  * @ORM\Table(name="det_cot_personalizada", indexes={@ORM\Index(name="IDX_EA2E464B6E6B11EB", columns={"idCotPersonalizada"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DetCotPersonalizadaRepository")
  */
 class DetCotPersonalizada
 {
@@ -46,6 +46,47 @@ class DetCotPersonalizada
      * })
      */
     private $idcotpersonalizada;
+
+    public function getCodproducto(): ?int
+    {
+        return $this->codproducto;
+    }
+
+    public function getCanproducto(): ?int
+    {
+        return $this->canproducto;
+    }
+
+    public function setCanproducto(?int $canproducto): self
+    {
+        $this->canproducto = $canproducto;
+
+        return $this;
+    }
+
+    public function getPrecioproducto(): ?int
+    {
+        return $this->precioproducto;
+    }
+
+    public function setPrecioproducto(int $precioproducto): self
+    {
+        $this->precioproducto = $precioproducto;
+
+        return $this;
+    }
+
+    public function getIdcotpersonalizada(): ?CotPersonalizada
+    {
+        return $this->idcotpersonalizada;
+    }
+
+    public function setIdcotpersonalizada(?CotPersonalizada $idcotpersonalizada): self
+    {
+        $this->idcotpersonalizada = $idcotpersonalizada;
+
+        return $this;
+    }
 
 
 }

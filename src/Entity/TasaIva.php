@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TasaIva
  *
  * @ORM\Table(name="tasa_iva")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\TasaIvaRepository")
  */
 class TasaIva
 {
@@ -27,6 +27,23 @@ class TasaIva
      * @ORM\Column(name="tasaIva", type="float", precision=4, scale=3, nullable=false, options={"default"="0.000"})
      */
     private $tasaiva = 0.000;
+
+    public function getIdtasaiva(): ?int
+    {
+        return $this->idtasaiva;
+    }
+
+    public function getTasaiva(): ?float
+    {
+        return $this->tasaiva;
+    }
+
+    public function setTasaiva(float $tasaiva): self
+    {
+        $this->tasaiva = $tasaiva;
+
+        return $this;
+    }
 
 
 }

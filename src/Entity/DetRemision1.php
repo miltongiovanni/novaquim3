@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DetRemision1
  *
  * @ORM\Table(name="det_remision1", indexes={@ORM\Index(name="det_remision1_remision1_idRemision_fk", columns={"idRemision"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DetRemision1Repository")
  */
 class DetRemision1
 {
@@ -58,6 +58,71 @@ class DetRemision1
      * })
      */
     private $idremision;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getCodproducto(): ?int
+    {
+        return $this->codproducto;
+    }
+
+    public function setCodproducto(int $codproducto): self
+    {
+        $this->codproducto = $codproducto;
+
+        return $this;
+    }
+
+    public function getCantproducto(): ?float
+    {
+        return $this->cantproducto;
+    }
+
+    public function setCantproducto(?float $cantproducto): self
+    {
+        $this->cantproducto = $cantproducto;
+
+        return $this;
+    }
+
+    public function getLoteproducto(): ?int
+    {
+        return $this->loteproducto;
+    }
+
+    public function setLoteproducto(int $loteproducto): self
+    {
+        $this->loteproducto = $loteproducto;
+
+        return $this;
+    }
+
+    public function getPrecioproducto(): ?int
+    {
+        return $this->precioproducto;
+    }
+
+    public function setPrecioproducto(?int $precioproducto): self
+    {
+        $this->precioproducto = $precioproducto;
+
+        return $this;
+    }
+
+    public function getIdremision(): ?Remision1
+    {
+        return $this->idremision;
+    }
+
+    public function setIdremision(?Remision1 $idremision): self
+    {
+        $this->idremision = $idremision;
+
+        return $this;
+    }
 
 
 }

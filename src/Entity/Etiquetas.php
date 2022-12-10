@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Etiquetas
  *
  * @ORM\Table(name="etiquetas", indexes={@ORM\Index(name="etiquetas_tasa_iva_idTasaIva_fk", columns={"codIva"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\EtiquetasRepository")
  */
 class Etiquetas
 {
@@ -51,6 +51,59 @@ class Etiquetas
      * })
      */
     private $codiva;
+
+    public function getCodetiqueta(): ?int
+    {
+        return $this->codetiqueta;
+    }
+
+    public function getNometiqueta(): ?string
+    {
+        return $this->nometiqueta;
+    }
+
+    public function setNometiqueta(string $nometiqueta): self
+    {
+        $this->nometiqueta = $nometiqueta;
+
+        return $this;
+    }
+
+    public function getStocketiqueta(): ?int
+    {
+        return $this->stocketiqueta;
+    }
+
+    public function setStocketiqueta(?int $stocketiqueta): self
+    {
+        $this->stocketiqueta = $stocketiqueta;
+
+        return $this;
+    }
+
+    public function getPrecetiqueta(): ?float
+    {
+        return $this->precetiqueta;
+    }
+
+    public function setPrecetiqueta(float $precetiqueta): self
+    {
+        $this->precetiqueta = $precetiqueta;
+
+        return $this;
+    }
+
+    public function getCodiva(): ?TasaIva
+    {
+        return $this->codiva;
+    }
+
+    public function setCodiva(?TasaIva $codiva): self
+    {
+        $this->codiva = $codiva;
+
+        return $this;
+    }
 
 
 }

@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Formula
  *
  * @ORM\Table(name="formula", indexes={@ORM\Index(name="formula_productos_codProducto_fk", columns={"codProducto"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\FormulaRepository")
  */
 class Formula
 {
@@ -59,6 +61,59 @@ class Formula
     public function __construct()
     {
         $this->codmprima = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getIdformula(): ?int
+    {
+        return $this->idformula;
+    }
+
+    public function getNomformula(): ?string
+    {
+        return $this->nomformula;
+    }
+
+    public function setNomformula(?string $nomformula): self
+    {
+        $this->nomformula = $nomformula;
+
+        return $this;
+    }
+
+    public function getCodproducto(): ?Productos
+    {
+        return $this->codproducto;
+    }
+
+    public function setCodproducto(?Productos $codproducto): self
+    {
+        $this->codproducto = $codproducto;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mprimas>
+     */
+    public function getCodmprima(): Collection
+    {
+        return $this->codmprima;
+    }
+
+    public function addCodmprima(Mprimas $codmprima): self
+    {
+        if (!$this->codmprima->contains($codmprima)) {
+            $this->codmprima->add($codmprima);
+        }
+
+        return $this;
+    }
+
+    public function removeCodmprima(Mprimas $codmprima): self
+    {
+        $this->codmprima->removeElement($codmprima);
+
+        return $this;
     }
 
 }

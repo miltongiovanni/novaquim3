@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * InvProd
  *
  * @ORM\Table(name="inv_prod", indexes={@ORM\Index(name="IDX_82C72B0CA5DF3D48", columns={"codPresentacion"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvProdRepository")
  */
 class InvProd
 {
@@ -39,6 +39,35 @@ class InvProd
      * })
      */
     private $codpresentacion;
+
+    public function getLoteprod(): ?int
+    {
+        return $this->loteprod;
+    }
+
+    public function getInvprod(): ?float
+    {
+        return $this->invprod;
+    }
+
+    public function setInvprod(float $invprod): self
+    {
+        $this->invprod = $invprod;
+
+        return $this;
+    }
+
+    public function getCodpresentacion(): ?Prodpre
+    {
+        return $this->codpresentacion;
+    }
+
+    public function setCodpresentacion(?Prodpre $codpresentacion): self
+    {
+        $this->codpresentacion = $codpresentacion;
+
+        return $this;
+    }
 
 
 }
