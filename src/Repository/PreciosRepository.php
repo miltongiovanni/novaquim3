@@ -14,7 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Precios[]    findAll()
  * @method Precios[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class Precios extends ServiceEntityRepository
+class PreciosRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
