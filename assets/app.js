@@ -21,6 +21,20 @@ require('bootstrap');
 // require('bootstrap/js/dist/tooltip');
 // require('bootstrap/js/dist/popover');
 
+// Feather icons are used on some pages
+// Replace() replaces [data-feather] elements with icons
+import featherIcons from "feather-icons"
+featherIcons.replace()
+
+// Mazer internal JS. Include this in your project to get
+// the sidebar running.
+require("./js/components/dark")
+require("./js/mazer")
+
+
+
+
+
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
