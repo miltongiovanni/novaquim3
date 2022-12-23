@@ -34,7 +34,8 @@ Encore
      * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-
+    .addStyleEntry('auth', './assets/styles/pages/auth.scss')
+    .addStyleEntry('app-dark', './assets/styles/themes/dark/app-dark.scss')
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 

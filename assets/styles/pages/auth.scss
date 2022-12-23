@@ -15,18 +15,19 @@ body {
         padding: 5rem 8rem;
         
         .auth-title {
-            font-size: 4rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
         .auth-subtitle {
-            font-size: 1.7rem;
-            line-height: 2.5rem;
+            font-size: 1.3rem;
+            line-height: 2.0rem;
             color: #a8aebb;
         }
         .auth-logo {
-            margin-bottom: 7rem;
+            margin-bottom: 3rem;
             img {
-                height: 2rem;
+                width: 100%;
+                height: auto;
             }
         }
         @media screen and (max-width: 767px) {
