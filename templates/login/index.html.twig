@@ -48,6 +48,7 @@
                             <i class="bi bi-shield-lock"></i>
                         </div>
                     </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Iniciar sesión
                     </button>
                 </form>
