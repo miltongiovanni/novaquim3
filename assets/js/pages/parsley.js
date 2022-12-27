@@ -1,3 +1,5 @@
+import parsley from "parsleyjs/dist/parsley";
+require('parsleyjs/dist/i18n/es')
 $.extend(window.Parsley.options, {
   focus: "first",
   excluded:
