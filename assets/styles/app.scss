@@ -12,6 +12,10 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons.scss";
 
+// Fix icon placement
+body .bi::before, [class^=bi-]::before, [class*=" bi-"]::before {
+  vertical-align: sub;
+}
 
 /*
 ====== TABLE OF CONTENTS =======
