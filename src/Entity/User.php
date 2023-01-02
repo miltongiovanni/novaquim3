@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -34,6 +35,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $activo = null;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Perfiles $perfil = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $f_creacion = null;
 
     public function getId(): ?int
     {
@@ -125,6 +136,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function isActivo(): ?bool
+    {
+        return $this->activo;
+    }
+
+    public function setActivo(?bool $activo): self
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    public function getPerfil(): ?Perfiles
+    {
+        return $this->perfil;
+    }
+
+    public function setPerfil(?Perfiles $perfil): self
+    {
+        $this->perfil = $perfil;
+
+        return $this;
+    }
+
+    public function getFCreacion(): ?\DateTimeInterface
+    {
+        return $this->f_creacion;
+    }
+
+    public function setFCreacion(?\DateTimeInterface $f_creacion): self
+    {
+        $this->f_creacion = $f_creacion;
 
         return $this;
     }

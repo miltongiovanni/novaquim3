@@ -30,10 +30,21 @@ featherIcons.replace()
 // the sidebar running.
 require("./js/components/dark")
 require("./js/mazer")
-
-
-
-
+//import DataTable from 'datatables.net';
+// Datatable (plugin jquery) pour bootstrap
+// import 'datatables.net/js/jquery.dataTables.js';
+// import 'datatables.net-bs5/js/dataTables.bootstrap5';
+// import 'datatables.net-bs5/css/dataTables.bootstrap5.css';
+// window.JSZip = require( 'jszip' );
+// const pdfMake = require( 'pdfmake/build/pdfmake' );
+// const pdfFonts  = require( 'pdfmake/build/vfs_fonts' );
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
+// var dt = require( 'datatables.net' )(window, $);
+// require( 'datatables.net-bs5' )(window, $);
+// require( 'datatables.net-buttons/js/dataTables.buttons.min' )(window, $);
+// require( 'datatables.net-buttons-bs5' )(window, $);
+// require( 'datatables.net-buttons/js/buttons.flash' )(window, $);
+// require( 'datatables.net-buttons/js/buttons.html5' )(window, $);
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();

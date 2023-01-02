@@ -35,6 +35,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('parsley', './assets/js/pages/parsley.js')
+    .addEntry('datatables', './assets/js/pages/datatables.js')
     .addStyleEntry('auth', './assets/styles/pages/auth.scss')
     .addStyleEntry('app-dark', './assets/styles/themes/dark/app-dark.scss')
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)

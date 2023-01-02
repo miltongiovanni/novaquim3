@@ -2,19 +2,61 @@
 
 {% block title %}Hello UsuariosController!{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('datatables') }}
+{% endblock %}
+
 {% block content %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h2>Lista de usuarios</h2>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table" id="usersDatatable">
+        <thead>
+        <tr>
+            <th class="text-center">Id</th>
+            <th>Correo electrónico</th>
+            <th>Perfil</th>
+            <th>Fecha de creación</th>
+            <th class="text-center">Estado</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td class="text-center">{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.perfil.descripcion }}</td>
+                <td>{{ user.getFCreacion()|date("Y-m-d") }}</td>
+                <td class="text-center">
+                    {% if user.activo == 1 %}
+                        <i class="bi bi-check-circle-fill activo"></i>
+                    {% else %}
+                        <i class="bi bi-x-circle-fill inactivo"></i>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Acciones
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="{# {{ path('user_show', {'id': user.id}) }} #}">Ver</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                   href="{# {{ path('user_edit', {'id': user.id}) }} #}">Editar</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/novaquim3/src/Controller/UsuariosController.php'|file_link(0) }}">src/Controller/UsuariosController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/novaquim3/templates/usuarios/index.html.twig'|file_link(0) }}">templates/usuarios/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a class="btn btn-primary" href="{# {{ path('user_new') }} #}">Crear usuario</a>
 {% endblock %}
