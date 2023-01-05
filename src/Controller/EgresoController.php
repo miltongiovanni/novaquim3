@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EgresoController extends AbstractController
 {
-    #[Route('/egreso', name: 'app_egreso')]
+    #[Route('/egreso', name: 'egreso')]
     public function index(): Response
     {
         return $this->render('egreso/index.html.twig', [

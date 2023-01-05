@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EnvaseController extends AbstractController
 {
-    #[Route('/envase', name: 'app_envase')]
+    #[Route('/envase', name: 'envase')]
     public function index(): Response
     {
         return $this->render('envase/index.html.twig', [

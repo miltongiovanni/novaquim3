@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EtiquetasController extends AbstractController
 {
-    #[Route('/etiquetas', name: 'app_etiquetas')]
+    #[Route('/etiquetas', name: 'etiquetas')]
     public function index(): Response
     {
         return $this->render('etiquetas/index.html.twig', [

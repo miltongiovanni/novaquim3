@@ -5,15 +5,15 @@ import 'datatables.net-bs5/css/dataTables.bootstrap5.css';
 
 
 $(document).ready(function () {
-    let jquery_datatable = $("#usersDatatable").DataTable({
+    let usersDatatable = $("#usersDatatable").DataTable({
         "columnDefs":
             [
                 {
-                    "targets": [0],
+                    "targets": [0, 4, 5],
                     "className": 'dt-body-center'
                 },
                 {
-                    "targets": [4],
+                    "targets": [4, 5],
                     "orderable": false
                 }
             ],
@@ -32,6 +32,6 @@ $(document).ready(function () {
             "infoFiltered": "(Filtrado de _MAX_ en total)"
 
         },
-    })
+    });
 });
 

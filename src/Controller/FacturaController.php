@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FacturaController extends AbstractController
 {
-    #[Route('/factura', name: 'app_factura')]
+    #[Route('/factura', name: 'factura')]
     public function index(): Response
     {
         return $this->render('factura/index.html.twig', [
