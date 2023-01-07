@@ -18,6 +18,9 @@
         <div class="offset-10 col-2">
             <a class="btn btn-primary w-100" href=" {{ path('user_new') }} ">Crear usuario</a>
         </div>
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
     </div>
 
     <table class="table" id="usersDatatable">

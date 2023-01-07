@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Editar usuario{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('parsley') }}
 
+{% endblock %}
 {% block content %}
     <h2 class="ps-3">Editar usuario</h2>
 

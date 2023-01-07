@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-vertical needs-validation" method="post" novalidate
+                    <form class="form form-vertical" method="post" data-parsley-validate
                           action="{% if user.id is defined %}{{ path('user_update', {'id':  user.id }) }}{% else %}{{ path('user_update', {'id':  0 }) }}{% endif %}"
                     >
                         <input type="hidden" name="action" id="action" value="{{ action }}">
@@ -16,33 +16,23 @@
                                             <input type="text" class="form-control" placeholder="nombre@example.com"
                                                    id="email" name="email"
                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required
+                                                   data-parsley-required="true"
                                                    value="{% if user.email is defined %}{{ user.email }}{% endif %}">
-                                            <div class="valid-feedback">Válido.</div>
-                                            <div class="invalid-feedback">
-                                                Escriba un correo válido.
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="form-group has-icon-left">
+                                    <div class="form-group">
                                         <label for="role">Perfil</label>
                                         <fieldset class="form-group">
                                             <select class="form-select" id="role" name="role" required>
                                                 <option value="" disabled {% if action=='insert' %}selected{% endif %}>
-                                                    Seleccione le rol
+                                                    Seleccione el perfil
                                                 </option>
-                                                <option value="ROLE_ADMIN" {% if user.roles is defined and 'ROLE_ADMIN' in user.roles %} selected {% endif %}>
-                                                    Administrador
-                                                </option>
-                                                <option value="ROLE_USER" {% if user.roles is defined and 'ROLE_USER' in user.roles %} selected {% endif %}>
-                                                    Usuario
-                                                </option>
+                                                {% for perfil in perfiles %}
+                                                    <option value="{{ perfil.id }}-{{ perfil.code }}">{{ perfil.descripcion }} </option>
+                                                {% endfor %}
                                             </select>
-                                            <div class="valid-feedback">Válido.</div>
-                                            <div class="invalid-feedback">
-                                                Seleccione un perfil.
-                                            </div>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -52,9 +42,6 @@
                                         <div class="position-relative">
                                             <input type="password" class="form-control" placeholder="Contraseña" pattern=".{8,}" title="Ocho o más caracteres"
                                                    id="password" name="password" {% if action=='insert' %} required {% endif %}>
-                                            <div class="invalid-feedback" id="passwordMessage">
-                                                Ocho o más caracteres.
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

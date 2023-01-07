@@ -12,9 +12,6 @@ $.extend(window.Parsley.options, {
   classHandler: function (el) {
     return el.$element.closest(".form-group")
   },
-  errorsContainer: function (el) {
-    return el.$element.closest(".form-group")
-  },
   errorsWrapper: '<div class="parsley-error"></div>',
   errorTemplate: "<span></span>",
 })
