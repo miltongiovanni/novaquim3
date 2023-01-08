@@ -50,16 +50,25 @@
                 </td>
                 <td>
                     <div class="dropdown">
-                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        <a class="btn btn-primary dropdown-toggle w-100" href="#" role="button" id="dropdownMenuLink"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             Acciones
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="{# {{ path('user_show', {'id': user.id}) }} #}">Ver</a>
+                            {% if user.activo == 1 %}
+                                <li>
+                                    <a class="dropdown-item" href=" {{ path('user_deactivate', {'id': user.id}) }} ">Desactivar</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a class="dropdown-item" href=" {{ path('user_activate', {'id': user.id}) }} ">Activar</a>
+                                </li>
+                            {% endif %}
+                            <li>
+                                <a class="dropdown-item" href=" {{ path('user_edit', {'id': user.id}) }} ">Editar</a>
                             </li>
-                            <li><a class="dropdown-item"
-                                   href="{# {{ path('user_edit', {'id': user.id}) }} #}">Editar</a></li>
                         </ul>
+
                     </div>
                 </td>
             </tr>

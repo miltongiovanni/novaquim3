@@ -4,15 +4,18 @@
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('parsley') }}
-
 {% endblock %}
 {% block content %}
     <h2 class="ps-3">Editar usuario</h2>
-
+{{ dump(user) }}
     {{ include('usuarios/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a class="btn btn-primary ms-3" href="{{ path('user_index') }}">Volver a la lista</a>
-    {% if is_granted('ROLE_ADMIN') %}
+    <div class="row my-3">
+        <div class="offset-4 col-2">
+            <a class="btn btn-primary w-100" href="{{ path('usuarios') }}">Volver a la lista</a>
+        </div>
+    </div>
+    {% if is_granted('ROLE_ADMINISTRADOR') %}
     {{ include('usuarios/_delete_form.html.twig') }}
     {% endif %}
 {% endblock %}
