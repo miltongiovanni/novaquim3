@@ -156,11 +156,11 @@ class UsuariosController extends AbstractController
     }
 
     #[Route('/usuario/{id}/borrar', name: 'user_delete', methods: ['POST'])]
-    public function delete(Request $request, User $user, UserRepository $userRepository): Response
+    public function delete(Request $request, int $id, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
-            $userRepository->remove($user);
-        }
+        $user = $userRepository->find($id);
+        $entityManager->remove($user);
+        $entityManager->flush();
 
         return $this->redirectToRoute('usuarios', [], Response::HTTP_SEE_OTHER);
     }

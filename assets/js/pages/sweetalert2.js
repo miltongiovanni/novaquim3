@@ -1,3 +1,37 @@
+import Swal from 'sweetalert2'
+
+
+document.getElementById("delete-user").addEventListener("click", (e) => {
+  Swal.fire({
+    title: 'Confirmación',
+    text: "¿Está seguro de borrar el usuario?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#000066',
+    cancelButtonColor: '#dc3545',
+    confirmButtonText: 'Si',
+    cancelButtonText: 'No'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById('deleteUserForm').submit();
+      Swal.fire(
+          'Borrado!',
+          'El usuario ha sido borrado.',
+          'success'
+      )
+    }
+  })
+})
+
+
+
+
+
+
+
+
+/*
+
 document.getElementById("basic").addEventListener("click", (e) => {
   Swal.fire("Any fool can use a computer")
 })
@@ -140,3 +174,4 @@ document.getElementById("select").addEventListener("click", async (e) => {
     Swal.fire(`You selected: ${fruit}`)
   }
 })
+*/

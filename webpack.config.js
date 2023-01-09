@@ -35,6 +35,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('parsley', './assets/js/pages/parsley.js')
+    .addEntry('sweetalert2', './assets/js/pages/sweetalert2.js')
     .addEntry('datatables', './assets/js/pages/datatables.js')
     .addStyleEntry('auth', './assets/styles/pages/auth.scss')
     .addStyleEntry('app-dark', './assets/styles/themes/dark/app-dark.scss')
