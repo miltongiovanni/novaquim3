@@ -38,7 +38,7 @@
                                                     Seleccione el perfil
                                                 </option>
                                                 {% for perfil in perfiles %}
-                                                    <option value="{{ perfil.id }}-{{ perfil.code }}" {{ user.perfil.id == perfil.id ? 'selected' : ''}} >{{ perfil.descripcion }} </option>
+                                                    <option value="{{ perfil.id }}-{{ perfil.code }}" {{ user is defined and user.perfil.id == perfil.id ? 'selected' : ''}} >{{ perfil.descripcion }} </option>
                                                 {% endfor %}
                                             </select>
                                         </fieldset>

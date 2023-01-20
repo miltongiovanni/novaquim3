@@ -46,14 +46,17 @@
                 </a>
             </li>
 
-            <li class="sidebar-item {{ is_active('usuarios') }} {{ is_active('personal') }} has-sub">
+            <li class="sidebar-item {{ is_active('usuarios') }} {{ is_active('personal') }} {{ is_active('permission_index') }} has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-stack"></i>
                     <span>Administración</span>
                 </a>
-                <ul class="submenu {{ is_active('usuarios') }} {{ is_active('personal') }}">
+                <ul class="submenu {{ is_active('usuarios') }} {{ is_active('personal') }} {{ is_active('permission_index') }}">
                     <li class="submenu-item {{ is_active('usuarios') }}">
                         <a href="{{ path('usuarios') }}">Usuarios</a>
+                    </li>
+                    <li class="submenu-item {{ is_active('permission_index') }}">
+                        <a href="{{ path('permission_index') }}">Permisos</a>
                     </li>
                     <li class="submenu-item {{ is_active('personal') }}">
                         <a href="{{ path('personal') }}">Personal</a>

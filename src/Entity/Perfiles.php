@@ -28,9 +28,16 @@ class Perfiles
     #[ORM\OneToMany(mappedBy: 'perfil', targetEntity: User::class)]
     private Collection $users;
 
+    #[ORM\OneToMany(mappedBy: 'perfil', targetEntity: Permission::class)]
+    private Collection $permissions;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $slug = null;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->permissions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -100,6 +107,48 @@ class Perfiles
                 $user->setPerfil(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Permission>
+     */
+    public function getPermissions(): Collection
+    {
+        return $this->permissions;
+    }
+
+    public function addPermission(Permission $permission): self
+    {
+        if (!$this->permissions->contains($permission)) {
+            $this->permissions->add($permission);
+            $permission->setPerfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removePermission(Permission $permission): self
+    {
+        if ($this->permissions->removeElement($permission)) {
+            // set the owning side to null (unless already changed)
+            if ($permission->getPerfil() === $this) {
+                $permission->setPerfil(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
