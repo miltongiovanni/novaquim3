@@ -39,20 +39,36 @@ class PermissionRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Permission[] Returns an array of Permission objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Permission[] Returns an array of Permission objects
+     */
+    public function findByPerfilId($value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.perfil', 'pe','WITH', 'pe.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+    /**
+     * @return Permission[] Returns an array of Permission objects
+     */
+    public function findOneByPerfilId($value, $atributo, $modulo): ?Permission
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.perfil', 'pe','WITH', 'pe.id = :val')
+            ->andWhere('p.perfil = :val')
+            ->andWhere('p.atributo = :atributo')
+            ->andWhere('p.modulo = :modulo')
+            ->setParameter('val', $value)
+            ->setParameter('atributo', $atributo)
+            ->setParameter('modulo', $modulo)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Permission
 //    {

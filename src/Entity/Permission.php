@@ -30,6 +30,9 @@ class Permission
     #[ORM\JoinColumn(nullable: false)]
     private ?Perfiles $perfil = null;
 
+    #[ORM\Column]
+    private ?bool $activo = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +94,18 @@ class Permission
     public function setPerfil(?Perfiles $perfil): self
     {
         $this->perfil = $perfil;
+
+        return $this;
+    }
+
+    public function isActivo(): ?bool
+    {
+        return $this->activo;
+    }
+
+    public function setActivo(bool $activo): self
+    {
+        $this->activo = $activo;
 
         return $this;
     }
