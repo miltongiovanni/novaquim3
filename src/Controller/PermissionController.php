@@ -15,12 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/permisos')]
 class PermissionController extends AbstractController
 {
-    public const MODULOS = ['ADMINISTRACIÓN', 'CONFIGURACIÓN', 'COMPRAS', 'PROVEEDORES', 'CLIENTES', 'TESORERÍA', 'CARTERA', 'PRODUCCIÓN', 'ENVASADO', 'KITS', 'INVENTARIOS', 'VENTAS'];
+    public const MODULOS = ['ADMINISTRACIÓN', 'CONFIGURACIÓN', 'COMPRAS', 'PROVEEDORES', 'CLIENTES', 'TESORERÍA', 'CARTERA', 'PRODUCCIÓN', 'ENVASADO', 'KITS', 'INVENTARIOS', 'VENTAS', 'HISTÓRICO'];
 
     #[Route('/', name: 'permission_index', methods: ['GET'])]
     public function index(PermissionRepository $permissionRepository, PerfilesRepository $perfilesRepository): Response
     {
-
         return $this->render('permission/index.html.twig', [
             'perfiles' => $perfilesRepository->findAll(),
         ]);

@@ -39,7 +39,7 @@
                                         <div class="checkbox">
                                             <input type="checkbox" id="VIEW_{{ modulo }}" value="1"
                                                    class='form-check-input' name="permisos[VIEW_{{ modulo }}]"
-                                                    {{ permisos['VIEW_'~modulo] == '1' ? 'checked' : '' }}>
+                                                    {{ permisos['VIEW_'~modulo] is defined and permisos['VIEW_'~modulo] == '1' ? 'checked' : '' }}>
                                             <label for="VIEW_{{ modulo }}">Ver</label>
                                         </div>
                                     </div>
@@ -51,7 +51,7 @@
                                         <div class="checkbox">
                                             <input type="checkbox" id="EDIT_{{ modulo }}" value="1"
                                                    class='form-check-input' name="permisos[EDIT_{{ modulo }}]"
-                                                    {{ permisos['EDIT_'~modulo] == '1' ? 'checked' : '' }}>
+                                                    {{ permisos['EDIT_'~modulo]  is defined and permisos['EDIT_'~modulo] == '1' ? 'checked' : '' }}>
                                             <label for="EDIT_{{ modulo }}">Editar</label>
                                         </div>
                                     </div>

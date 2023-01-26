@@ -45,7 +45,7 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
+            {% if is_granted('VIEW', 'ADMINISTRACIÓN')  %}
             <li class="sidebar-item {{ is_active('usuarios') }} {{ is_active('personal') }} {{ is_active('permission_index') }} has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-stack"></i>
@@ -63,7 +63,8 @@
                     </li>
                 </ul>
             </li>
-
+            {% endif %}
+            {% if is_granted('VIEW', 'CONFIGURACIÓN')  %}
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-gear-fill"></i>
@@ -120,7 +121,8 @@
                     </li>
                 </ul>
             </li>
-
+            {% endif %}
+            {% if is_granted('VIEW', 'COMPRAS')  %}
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-bag"></i>
@@ -150,6 +152,8 @@
                     </li>
                 </ul>
             </li>
+            {% endif %}
+            {% if is_granted('VIEW', 'TESORERÍA')  %}
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-wallet2"></i>
@@ -167,8 +171,9 @@
                     </li>
                 </ul>
             </li>
+            {% endif %}
 
-
+            {% if is_granted('VIEW', 'PRODUCCIÓN')  %}
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-wrench-adjustable"></i>
@@ -198,7 +203,8 @@
                     </li>
                 </ul>
             </li>
-
+            {% endif %}
+            {% if is_granted('VIEW', 'ENVASADO')  %}
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-trash2-fill"></i>
@@ -220,6 +226,8 @@
                     </li>
                 </ul>
             </li>
+            {% endif %}
+            {% if is_granted('VIEW', 'KITS')  %}
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-bounding-box"></i>
@@ -249,6 +257,8 @@
                     </li>
                 </ul>
             </li>
+            {% endif %}
+            {% if is_granted('VIEW', 'INVENTARIOS')  %}
 
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
@@ -285,6 +295,8 @@
                     </li>
                 </ul>
             </li>
+            {% endif %}
+            {% if is_granted('VIEW', 'VENTAS')  %}
 
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
@@ -316,12 +328,45 @@
                     <li class="submenu-item ">
                         <a href="form-editor-tinymce.html">Consulta</a>
                     </li>
+                </ul>
+            </li>
+            {% endif %}
+            {% if is_granted('VIEW', 'HISTÓRICO')  %}
+
+            <li class="sidebar-item  has-sub">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-currency-dollar"></i>
+                    <span>Histórico Ventas</span>
+                </a>
+                <ul class="submenu ">
                     <li class="submenu-item ">
-                        <a href="form-editor-tinymce.html">TinyMCE</a>
+                        <a href="form-editor-quill.html">Clientes</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="form-editor-ckeditor.html">Cotizaciones</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="form-editor-summernote.html">Pedidos</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="form-editor-tinymce.html">Salidas por remisión</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="form-editor-tinymce.html">Factura</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="form-editor-tinymce.html">Rutero</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="form-editor-tinymce.html">Notas crédito</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a href="form-editor-tinymce.html">Consulta</a>
                     </li>
                 </ul>
             </li>
-
+            {% endif %}
+            {% if is_granted('VIEW', 'CARTERA')  %}
             <li class="sidebar-item  has-sub">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-cash-coin"></i>
@@ -345,7 +390,7 @@
                     </li>
                 </ul>
             </li>
-
+            {% endif %}
         </ul>
     </div>
 </div>

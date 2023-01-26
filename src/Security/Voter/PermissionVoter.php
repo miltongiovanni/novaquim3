@@ -2,43 +2,46 @@
 
 namespace App\Security\Voter;
 
+use App\Repository\PermissionRepository;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Authorization\Voter\Voter;
+use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class PermissionVoter extends Voter
+class PermissionVoter implements VoterInterface
 {
-    public const EDIT = 'POST_EDIT';
-    public const VIEW = 'POST_VIEW';
-
-    protected function supports(string $attribute, mixed $subject): bool
+    private PermissionRepository $permissionRepository;
+    // this vote() method is the only required method of VoterInterface
+    // it should return ACCESS_ABSTAIN (i.e. not supported),
+    // ACCESS_GRANTED or ACCESS_DENIED.
+    public function __construct(PermissionRepository $permissionRepository)
     {
-        // replace with your own logic
-        // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, [self::EDIT, self::VIEW])
-            && $subject instanceof \App\Entity\Permission;
+        $this->permissionRepository = $permissionRepository;
     }
 
-    protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
+    public function vote(TokenInterface $token, $subject, array $attributes)
     {
+        $attribute = $attributes[0];
         $user = $token->getUser();
-        // if the user is anonymous, do not grant access
-        if (!$user instanceof UserInterface) {
-            return false;
+        // find all stored permissions for this attribute and subject
+        $permissions = $this->permissionRepository->findBy([
+            'atributo' => $attribute,
+            'modulo' => $subject,
+            'activo' => 1
+        ]);
+
+        // do not deny/grant if there is no permission for this
+        // attribute and subject
+        if (0 === count($permissions)) {
+            return self::ACCESS_ABSTAIN;
+        }
+        foreach ($permissions as $permission) {
+            if (!in_array($permission->getPerfil()->getCode(), $user->getRoles())) {
+                continue;
+            }
+            return self::ACCESS_GRANTED;
         }
 
-        // ... (check conditions and return true to grant permission) ...
-        switch ($attribute) {
-            case self::EDIT:
-                // logic to determine if the user can EDIT
-                // return true or false
-                break;
-            case self::VIEW:
-                // logic to determine if the user can VIEW
-                // return true or false
-                break;
-        }
-
-        return false;
+        // in any other case, deny access
+        return self::ACCESS_DENIED;
     }
 }
